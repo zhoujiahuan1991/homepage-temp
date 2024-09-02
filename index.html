@@ -55,6 +55,25 @@
             margin-top: 20px;
             display: inline-block;
         }
+        .show-less {
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        /* 提示框样式 */
+        #notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none; /* 默认隐藏 */
+            z-index: 1000;
+        }
     </style>
 </head>
 
@@ -183,6 +202,7 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                             </li>
                         </ul>
                         <div id="show-more" class="show-more" onclick="showMoreNews()">Show More</div>
+                        <div id="show-less" class="show-less" onclick="showLessNews()">Show Less</div>
                     </section>
                     <p id="direct" style="height:4rem;margin: 0;">&nbsp;</p>
                     <section style="font-size: 1.8rem;">
@@ -208,7 +228,9 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                         
                         <div id="0000" class="paper-list">
                             <ol> 
-                                <li><p>Qiwei Li, Yuxin Peng, and <b>Jiahuan Zhou*</b>, "Progressive Prototype Evolving for Dual-Forgetting Mitigation in Non-Exemplar Online Continual Learning", in 32nd ACM Multimedia Conference (<strong>ACM MM'24</strong>), Melbourne, Australia, 2024. [<a href="">pdf</a>] [<a href="">code</a>]</p>
+                                <li><p>Qiwei Li, Yuxin Peng, and <b>Jiahuan Zhou*</b>, "Progressive Prototype Evolving for Dual-Forgetting Mitigation in Non-Exemplar Online Continual Learning", in 32nd ACM Multimedia Conference (<strong>ACM MM'24</strong>), Melbourne, Australia, 2024.
+                                    <br>[<a href="">pdf</a>] [<a href="">code</a>] [<a onclick="copyTextAndNotify('这是一段可以自定义的文本')">bib</a>]</p>
+                                    <div id="notification">The bib of the selected paper has copied!</div>
                                 </li>
                                 <li><p>Kunlun Xu, Haozhuo Zhang, Yu Li, Yuxin Peng, and <b>Jiahuan Zhou*</b>, "Mitigate Catastrophic Remembering via Continual Knowledge Purification for Noisy Lifelong Person Re-Identification", in 32nd ACM Multimedia Conference (<strong>ACM MM'24</strong>), Melbourne, Australia, 2024. [<a href="">pdf</a>] [<a href="">code</a>]</p>
                                 </li>
@@ -559,6 +581,8 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
             }
         });
 
+
+        document.getElementById('show-less').style.display = 'none'; // 隐藏Show Less按钮
         // Show More功能
         function showMoreNews() {
             var newsItems = document.querySelectorAll('.news-item');
@@ -566,6 +590,47 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                 item.style.display = 'list-item'; // 显示所有新闻
             });
             document.getElementById('show-more').style.display = 'none'; // 隐藏Show More按钮
+            document.getElementById('show-less').style.display = 'inline-block'; // 显示Show Less按钮
+        }
+
+        // Show Less功能
+        function showLessNews() {
+            var newsItems = document.querySelectorAll('.news-item');
+            for (var i = 0; i < newsItems.length; i++) {
+                if (i < 6) {
+                    newsItems[i].style.display = 'list-item'; // 显示前5条新闻
+                } else {
+                    newsItems[i].style.display = 'none'; // 隐藏其他新闻
+                }
+            }
+            document.getElementById('show-more').style.display = 'inline-block'; // 显示Show More按钮
+            document.getElementById('show-less').style.display = 'none'; // 隐藏Show Less按钮
+        }
+
+
+
+        function copyTextAndNotify(text) {
+            // 创建一个临时的textarea元素
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // 对于移动设备
+
+            // 执行复制操作
+            document.execCommand("copy");
+
+            // 移除临时元素
+            document.body.removeChild(textarea);
+
+            // 显示提示信息
+            var notification = document.getElementById("notification");
+            notification.style.display = "block";
+
+            // 3秒后隐藏提示信息
+            setTimeout(function() {
+                notification.style.display = "none";
+            }, 3000);
         }
     </Script>
 </body>
