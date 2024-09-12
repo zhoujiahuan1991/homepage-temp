@@ -87,7 +87,7 @@
             color: white;
             font-weight: bold;
         }
-        /*标签样式*/
+        /*论文标签样式*/
         .circle-box {
             display: inline-block;
             width: 5px;
@@ -114,6 +114,20 @@
         }
         .tag {
             font-size: 16px;
+        }
+        /*兴趣标签样式*/
+        .box-container {
+            display: flex;
+            justify-content: space-between; /* 可以改为 'space-around' 或 'center' 以改变对齐方式 */
+        }
+        .box {
+            font-size: 17px;
+            width: 33%;  /* 每个div占30%的宽度 */
+            padding: 0px;
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            text-align: left;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -248,34 +262,28 @@ A.info:hover    {color:green;background:transparent;text-decoration:underline}
                     <p id="direct" style="height:4rem;margin: 0;">&nbsp;</p>
                     <section style="font-size: 1.7rem;">
                         <h3>Research Interests</h3>
-                        <p><div class="circle-box" style="background-color: rgb(0, 0, 0);"></div><b>Open-Environment Computer Vision</b>
-                            <div class="circle-box" style="background-color: rgb(0, 0, 0); margin-left: 10px;"></div><b>Efficient Learning from Limited Data</b>
-                            <div class="circle-box" style="background-color: rgb(0, 0, 0); margin-left: 10px;"></div><b>Multi-Modal Learning</b>
-                        </p>
-                        
-                        <p><div class="number-box" style="background-color: rgb(255, 0, 0);"></div>Object Re-Identification
-                            <div class="number-box" style="background-color: rgb(0, 0, 255); margin-left: 120px;"></div>Zero/Few-shot Learning
-                            <div class="number-box" style="background-color: rgb(100, 50, 0); margin-left: 116px;"></div>Visual-Language
-                        </p>
-
-                        <p><div class="number-box" style="background-color: rgb(255, 80, 80);"></div>Fine-grained Recogniiton
-                            <div class="number-box" style="background-color: rgb(50, 50, 255); margin-left: 106px;"></div>Incremental Learning
-                            <div class="number-box" style="background-color: rgb(150, 100, 0); margin-left: 137px;"></div>2D to 3D
-                        </p>
-
-                        <p><div class="number-box" style="background-color: rgb(255, 150, 150);"></div>Object Detection
-                            <div class="number-box" style="background-color: rgb(100, 100, 255); margin-left: 170px;"></div>Prompt Learning
-                            <div class="number-box" style="background-color: rgb(200, 150, 0); margin-left: 171px;"></div>Visible to Thermal
-                        </p>
-
-                        <p><div class="number-box" style="background-color: rgb(255, 224, 224);"></div>AIGC
-                            <div class="number-box" style="background-color: rgb(150, 150, 255); margin-left: 254px;"></div>Online Learning
-                            <div class="number-box" style="background-color: rgb(250, 200, 0); margin-left: 176px;"></div>Sketch to Photo</p></li>
-                        </p>
-
-                        <p>
-                            <div class="number-box" style="background-color: rgb(200, 200, 255); margin-left: 320px;"></div>Noisy Learning</p></li>
-                        </p>
+                        <div class="box-container">
+                            <div class="box">
+                                <div class="circle-box" style="background-color: rgb(0, 0, 0);"></div><b>Open-Environment Computer Vision</b><br>
+                                <div class="number-box" style="background-color: rgb(255, 0, 0);"></div>Object Re-Identification<br>
+                                <div class="number-box" style="background-color: rgb(255, 80, 80);"></div>Fine-grained Recogniiton<br>
+                                <div class="number-box" style="background-color: rgb(255, 150, 150);"></div>Object Detection<br>
+                                <div class="number-box" style="background-color: rgb(255, 224, 224);"></div>AIGC
+                            </div>
+                            <div class="box"><div class="circle-box" style="background-color: rgb(0, 0, 0);"></div><b>Efficient Learning from Limited Data</b><br>
+                                <div class="number-box" style="background-color: rgb(0, 0, 255);"></div>Zero/Few-shot Learning<br>
+                                <div class="number-box" style="background-color: rgb(50, 50, 255);"></div>Incremental Learning<br>
+                                <div class="number-box" style="background-color: rgb(100, 100, 255);"></div>Prompt Learning<br>
+                                <div class="number-box" style="background-color: rgb(150, 150, 255);"></div>Online Learning<br>
+                                <div class="number-box" style="background-color: rgb(200, 200, 255);"></div>Noisy Learning
+                            </div>
+                            <div class="box"><div class="circle-box" style="background-color: rgb(0, 0, 0);"></div><b>Multi-Modal Learning</b><br>
+                            <div class="number-box" style="background-color: rgb(100, 50, 0);"></div>Visual-Language<br>
+                            <div class="number-box" style="background-color: rgb(150, 100, 0);"></div>2D to 3D<br>
+                            <div class="number-box" style="background-color: rgb(200, 150, 0);"></div>Visible to Thermal<br>
+                            <div class="number-box" style="background-color: rgb(250, 200, 0);"></div>Sketch to Photo
+                            </div>
+                        </div>
                        
                     </section>
                     
